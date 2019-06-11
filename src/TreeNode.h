@@ -9,9 +9,9 @@ class TreeNode
     private:
         string name;
 
-        TreeNode *parent;
+        // TreeNode *parent;
         TreeNode *child;
-        TreeNode *previous;
+        // TreeNode *previous;
         TreeNode *next;
 
     public:
@@ -20,15 +20,21 @@ class TreeNode
 
         string getName();
 
-        void setParent(TreeNode *);
-        TreeNode *getParent();
+        // void setParent(TreeNode *);
+        // bool hasParent();
+        // TreeNode *getParent();
 
+        void addChild(TreeNode *);
         void setChild(TreeNode *);
+        bool hasChild();
         TreeNode *getChild();
 
-        void setPrevious(TreeNode *);
-        TreeNode *getPrevious();
+        // void setPrevious(TreeNode *);
+        // bool hasPrevious();
+        // TreeNode *getPrevious();
 
+        void addNext(TreeNode *);
         void setNext(TreeNode *);
+        bool hasNext();
         TreeNode *getNext();
 };

@@ -1,49 +1,42 @@
 #include <iostream>
 #include <string>
 
-#include <chrono>
-#include <thread>
-
 #include "TreeNode.h"
 
 using namespace std;
-using namespace std::this_thread;
-using namespace std::chrono_literals;
 
 int main()
 {
+    cout << "Program started." << endl;
+
     TreeNode rootTree("🎄");
 
-    TreeNode homeDirectory("home");
-    rootTree.setChild(&homeDirectory);
+        TreeNode homeDirectory("home");
+        rootTree.addChild(&homeDirectory);
 
-        TreeNode pedDirectory("ped");
-        homeDirectory.setNext(&pedDirectory);
+            TreeNode pedDirectory("ped");
+            homeDirectory.addChild(&pedDirectory);
 
-            TreeNode documentsDirectory("documents");
-            pedDirectory.setNext(&documentsDirectory);
+                TreeNode documentsDirectory("documents");
+                pedDirectory.addChild(&documentsDirectory);
 
-            TreeNode imagesDirectory("images");
-            documentsDirectory.setNext(&imagesDirectory);
+                TreeNode imagesDirectory("images");
+                pedDirectory.addChild(&imagesDirectory);
 
-    TreeNode optDirectory("opt");
-    homeDirectory.setChild(&optDirectory);
+        TreeNode optDirectory("opt");
+        rootTree.addChild(&optDirectory);
 
-    TreeNode varDirectory("var");
-    optDirectory.setChild(&varDirectory);
+        TreeNode varDirectory("var");
+        rootTree.addChild(&varDirectory);
 
-    TreeNode binDirectory("bin");
-    varDirectory.setChild(&binDirectory);
+        TreeNode binDirectory("bin");
+        rootTree.addChild(&binDirectory);
 
     cout << rootTree.getName();
 
     cout << "/" << rootTree.getChild()->getName();
-    cout << "/" << rootTree.getChild()->getNext()->getName();
-    cout << "/" << rootTree.getChild()->getNext()->getNext()->getName();
-
-    // while (true) {
-    //     sleep_for(500ms);
-    // }
+    cout << "/" << rootTree.getChild()->getChild()->getName();
+    cout << "/" << rootTree.getChild()->getChild()->getChild()->getName();
 
     return 0;
 }
