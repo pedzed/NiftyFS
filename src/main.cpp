@@ -2,6 +2,7 @@
 #include <string>
 
 #include "TreeNode.h"
+#include "TreeDumper.h"
 
 using namespace std;
 
@@ -9,34 +10,34 @@ int main()
 {
     cout << "Program started." << endl;
 
-    TreeNode rootTree("🎄");
+    TreeNode rootTree("/");
 
-        TreeNode homeDirectory("home");
+        TreeNode homeDirectory("/home");
         rootTree.addChild(&homeDirectory);
 
-            TreeNode pedDirectory("ped");
+            TreeNode pedDirectory("/ped");
             homeDirectory.addChild(&pedDirectory);
 
-                TreeNode documentsDirectory("documents");
+                TreeNode documentsDirectory("/documents");
                 pedDirectory.addChild(&documentsDirectory);
 
-                TreeNode imagesDirectory("images");
-                pedDirectory.addChild(&imagesDirectory);
+                TreeNode imagesDirectory("/images");
+                documentsDirectory.addNext(&imagesDirectory);
 
-        TreeNode optDirectory("opt");
-        rootTree.addChild(&optDirectory);
+                TreeNode videosDirectory("/videos");
+                documentsDirectory.addNext(&videosDirectory);
 
-        TreeNode varDirectory("var");
-        rootTree.addChild(&varDirectory);
+        TreeNode optDirectory("/opt");
+        homeDirectory.addNext(&optDirectory);
 
-        TreeNode binDirectory("bin");
-        rootTree.addChild(&binDirectory);
+        TreeNode varDirectory("/var");
+        homeDirectory.addNext(&varDirectory);
 
-    cout << rootTree.getName();
+        TreeNode binDirectory("/bin");
+        homeDirectory.addNext(&binDirectory);
 
-    cout << "/" << rootTree.getChild()->getName();
-    cout << "/" << rootTree.getChild()->getChild()->getName();
-    cout << "/" << rootTree.getChild()->getChild()->getChild()->getName();
+    TreeDumper treeDumper(&rootTree);
+    treeDumper.dump();
 
     return 0;
 }
