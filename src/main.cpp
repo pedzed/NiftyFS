@@ -11,7 +11,15 @@ int main()
 {
     cout << "Program started." << endl;
 
-    string path = "/www/repos/niftyfs/bin";
+    string path = "";
+
+    cout << "Start directory: ";
+    getline(cin, path);
+
+    if (path.empty()) {
+        cout << "No path entered. Default directory chosen." << endl;
+        path = "/www/repos/niftyfs/bin";
+    }
 
     FilesystemToTree filesystemToTree(path);
     TreeNode *rootTree = filesystemToTree.getTree();
