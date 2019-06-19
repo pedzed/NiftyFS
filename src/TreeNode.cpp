@@ -42,9 +42,9 @@ void TreeNode::addChild(TreeNode *node)
     }
 
     TreeNode *currentLast = child;
-    for (; currentLast->hasChild(); currentLast = currentLast->getChild());
+    for (; currentLast->hasNext(); currentLast = currentLast->getNext());
 
-    currentLast->setChild(node);
+    currentLast->setNext(node);
 }
 
 void TreeNode::setChild(TreeNode *node)
@@ -77,19 +77,6 @@ TreeNode *TreeNode::getChild()
 // {
 //     return previous;
 // }
-
-void TreeNode::addNext(TreeNode *node)
-{
-    if (!hasNext()) {
-        setNext(node);
-        return;
-    }
-
-    TreeNode *currentLast = next;
-    for (; currentLast->hasNext(); currentLast = currentLast->getNext());
-
-    currentLast->setNext(node);
-}
 
 void TreeNode::setNext(TreeNode *node)
 {
