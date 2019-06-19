@@ -2,6 +2,7 @@
 #include <string>
 
 #include "TreeNode.h"
+#include "FilesystemToTree.h"
 #include "TreeDumper.h"
 
 using namespace std;
@@ -10,33 +11,12 @@ int main()
 {
     cout << "Program started." << endl;
 
-    TreeNode rootTree("/");
+    string path = "/www/repos/niftyfs/bin";
 
-        TreeNode homeDirectory("/home");
-        rootTree.addChild(&homeDirectory);
+    FilesystemToTree filesystemToTree(path);
+    TreeNode *rootTree = filesystemToTree.getTree();
 
-            TreeNode pedDirectory("/ped");
-            homeDirectory.addChild(&pedDirectory);
-
-                TreeNode documentsDirectory("/documents");
-                pedDirectory.addChild(&documentsDirectory);
-
-                TreeNode imagesDirectory("/images");
-                documentsDirectory.addNext(&imagesDirectory);
-
-                TreeNode videosDirectory("/videos");
-                documentsDirectory.addNext(&videosDirectory);
-
-        TreeNode optDirectory("/opt");
-        homeDirectory.addNext(&optDirectory);
-
-        TreeNode varDirectory("/var");
-        homeDirectory.addNext(&varDirectory);
-
-        TreeNode binDirectory("/bin");
-        homeDirectory.addNext(&binDirectory);
-
-    TreeDumper treeDumper(&rootTree);
+    TreeDumper treeDumper(rootTree);
     treeDumper.dump();
 
     return 0;
