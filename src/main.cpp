@@ -11,21 +11,27 @@ int main()
 {
     cout << "Program started." << endl;
 
-    string path = "";
+    while (true) {
+        string path = "";
 
-    cout << "Start directory: ";
-    getline(cin, path);
+        cout << "Start directory: ";
+        getline(cin, path);
 
-    if (path.empty()) {
-        cout << "No path entered. Default directory chosen." << endl;
-        path = "/www/repos/niftyfs/bin";
+        if (path.empty()) {
+            cout << "No path entered. Default directory chosen." << endl;
+            path = "/www/repos/niftyfs/bin";
+        }
+
+        try {
+            FilesystemToTree filesystemToTree(path);
+            TreeNode *rootTree = filesystemToTree.getTree();
+
+            TreeDumper treeDumper(rootTree);
+            treeDumper.dump();
+        } catch (const fs::filesystem_error &e) {
+            cerr << "Uh oh! Error '" << e.code() << "'. " << e.what() << endl;
+        }
     }
-
-    FilesystemToTree filesystemToTree(path);
-    TreeNode *rootTree = filesystemToTree.getTree();
-
-    TreeDumper treeDumper(rootTree);
-    treeDumper.dump();
 
     return 0;
 }
