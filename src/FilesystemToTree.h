@@ -14,7 +14,6 @@ class FilesystemToTree
         TreeNode *rootTree;
 
         void populateTreeNodes(TreeNode *node, string path);
-        void depopulateTreeNodes(TreeNode *node);
 
     public:
         FilesystemToTree(string path);

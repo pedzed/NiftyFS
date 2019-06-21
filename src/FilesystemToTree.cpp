@@ -9,7 +9,6 @@ FilesystemToTree::FilesystemToTree(string path)
 
 FilesystemToTree::~FilesystemToTree()
 {
-    // depopulateTreeNodes(rootTree);
     delete rootTree;
 }
 
@@ -27,11 +26,6 @@ void FilesystemToTree::populateTreeNodes(TreeNode *node, string path)
         }
     }
 }
-
-// void FilesystemToTree::depopulateTreeNodes(TreeNode *node)
-// {
-//     // TODO
-// }
 
 TreeNode *FilesystemToTree::getTree()
 {
