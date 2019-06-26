@@ -11,9 +11,7 @@ TreeNode::TreeNode(string name)
 
 TreeNode::~TreeNode()
 {
-    delete parent;
     delete child;
-    delete previous;
     delete next;
 }
 
