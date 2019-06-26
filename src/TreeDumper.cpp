@@ -4,8 +4,9 @@
 using std::cout;
 using std::endl;
 
-TreeDumper::TreeDumper(TreeNode *tree)
-    : tree(tree)
+TreeDumper::TreeDumper(TreeNode *rootTree, TreeVisitor *treeVisitor)
+    : rootTree(rootTree),
+    treeVisitor(treeVisitor)
 {
     //
 }
@@ -13,7 +14,7 @@ TreeDumper::TreeDumper(TreeNode *tree)
 void TreeDumper::dump()
 {
     Level depth = 0;
-    dumpNodeLevel(tree, depth);
+    dumpNodeLevel(rootTree, depth);
 }
 
 void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
@@ -30,7 +31,17 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
         cout << dumpPrefix;
     }
 
-    cout << node->getName() << " (d: " << std::to_string(depth) << ")" << endl;
+    if (treeVisitor->isOnNode(node)) {
+        cout << "[";
+    }
+
+    cout << node->getName();
+
+    if (treeVisitor->isOnNode(node)) {
+        cout << "]";
+    }
+
+    cout << " (d: " << std::to_string(depth) << ")" << endl;
 
     if (node->hasChild()) {
         dumpNodeLevel(node->getChild(), depth + 1);

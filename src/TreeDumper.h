@@ -1,15 +1,17 @@
 #pragma once
 
 #include "TreeNode.h"
+#include "TreeVisitor.h"
 
 class TreeDumper
 {
     private:
         using Level = uint8_t;
-        TreeNode *tree;
+        TreeNode *rootTree;
+        TreeVisitor *treeVisitor;
 
     public:
-        TreeDumper(TreeNode *);
+        TreeDumper(TreeNode *, TreeVisitor *);
         void dump();
         void dumpNodeLevel(TreeNode *, Level);
 };
