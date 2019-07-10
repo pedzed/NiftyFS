@@ -3,6 +3,7 @@
 TreeNode::TreeNode(File file)
     : file(file)
 {
+    isExpanded_ = true;
     parent = NULL;
     child = NULL;
     previous = NULL;
@@ -18,6 +19,31 @@ TreeNode::~TreeNode()
 File TreeNode::getFile()
 {
     return file;
+}
+
+void TreeNode::expand()
+{
+    isExpanded_ = true;
+}
+
+bool TreeNode::isExpanded()
+{
+    return (isExpanded_);
+}
+
+void TreeNode::collapse()
+{
+    isExpanded_ = false;
+}
+
+bool TreeNode::isCollapsed()
+{
+    return (!isExpanded());
+}
+
+void TreeNode::toggleExpandAndCollapse()
+{
+    isExpanded_ = !isExpanded_;
 }
 
 void TreeNode::setParent(TreeNode *node)

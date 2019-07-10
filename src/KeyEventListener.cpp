@@ -45,6 +45,10 @@ bool KeyEventListener::hasPressedKeyRight()
     return (hasPressedKeyCode(keyCodeRight));
 }
 
+bool KeyEventListener::hasPressedKeyE()
+{
+    return (hasPressedKeyCode(keyCodeE));
+}
 
 bool KeyEventListener::hasPressedKeySpace()
 {

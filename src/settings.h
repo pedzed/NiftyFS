@@ -11,6 +11,7 @@ using KeyCode = uint16_t;
 #define keyCodeA 97
 #define keyCodeS 115
 #define keyCodeD 100
+#define keyCodeE 101
 
 #define keyCodeUp keyCodeW
 #define keyCodeDown keyCodeS

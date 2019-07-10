@@ -19,6 +19,8 @@ void TreeDumper::dump()
 
 void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
 {
+    cout << endl;
+
     uint8_t indentSize = (depth * 4) - 4;
     string dumpIndent = string(indentSize, ' ');
     string dumpPrefix = (node->hasNext()) ? "├── " : "└── ";
@@ -41,10 +43,14 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
         cout << "]";
     }
 
-    cout << " (d: " << std::to_string(depth) << ")" << endl;
+    cout << " (d: " << std::to_string(depth) << ")";
 
     if (node->hasChild()) {
-        dumpNodeLevel(node->getChild(), depth + 1);
+        if (node->isCollapsed()) {
+            cout << " <<Collapsed>>";
+        } else {
+            dumpNodeLevel(node->getChild(), depth + 1);
+        }
     }
 
     if (node->hasNext()) {

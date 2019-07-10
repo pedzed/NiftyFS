@@ -18,5 +18,6 @@ class KeyEventListener
         bool hasPressedKeyDown();
         bool hasPressedKeyLeft();
         bool hasPressedKeyRight();
+        bool hasPressedKeyE();
         bool hasPressedKeySpace();
 };

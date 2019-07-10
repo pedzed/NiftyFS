@@ -46,6 +46,8 @@ int main()
                     treeVisitor.moveUp();
                 } else if (keyEventListener.hasPressedKeyDown()) {
                     treeVisitor.moveDown();
+                } else if (keyEventListener.hasPressedKeyE()) {
+                    treeVisitor.getNode()->toggleExpandAndCollapse();
                 } else if (keyEventListener.hasPressedKeySpace()) {
                     ProcessRunner processRunner;
                     processRunner.run(ProcessType::VSCODE, treeVisitor.getNode()->getFile());
