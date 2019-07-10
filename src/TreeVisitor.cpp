@@ -16,9 +16,14 @@ void TreeVisitor::setNode(TreeNode *node)
     this->node = node;
 }
 
+TreeNode *TreeVisitor::getNode()
+{
+    return node;
+}
+
 bool TreeVisitor::isOnNode(TreeNode *node)
 {
-    return (this->node == node);
+    return (getNode() == node);
 }
 
 void TreeVisitor::moveUp()

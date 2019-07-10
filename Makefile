@@ -2,6 +2,7 @@ CXX := clang++
 CXX_FLAGS := \
 	-Wall \
 	-Wextra \
+	-Wc++11-extensions \
 	-std=c++17 \
 	-lboost_filesystem-mt \
 	-g

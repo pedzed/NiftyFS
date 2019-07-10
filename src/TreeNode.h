@@ -1,13 +1,11 @@
 #pragma once
 
-#include <string>
-
-using std::string;
+#include "File.h"
 
 class TreeNode
 {
     private:
-        string name;
+        File file;
 
         TreeNode *parent;
         TreeNode *child;
@@ -15,10 +13,10 @@ class TreeNode
         TreeNode *next;
 
     public:
-        TreeNode(string name);
+        TreeNode(File);
         ~TreeNode();
 
-        string getName();
+        File getFile();
 
         void setParent(TreeNode *);
         bool hasParent();

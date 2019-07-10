@@ -3,7 +3,10 @@
 
 FilesystemToTree::FilesystemToTree(string path)
 {
-    rootTree = new TreeNode(path);
+    auto directoryEntry = fs::directory_entry(path);
+    File file(directoryEntry);
+    rootTree = new TreeNode(file);
+
     populateTreeNodes(rootTree, path);
 }
 
@@ -14,14 +17,19 @@ FilesystemToTree::~FilesystemToTree()
 
 void FilesystemToTree::populateTreeNodes(TreeNode *node, string path)
 {
-    for (auto &file : fs::directory_iterator(path)) {
-        string fileName = file.path().filename().string();
-        string directoryPath = file.path().string();
+    // if (!fs::exists(path)) {
+    //     std::cout << "Path '" << path << "' does not exist." << std::endl;
+    //     return;
+    // }
 
-        TreeNode *childNode = new TreeNode(fileName);
+    for (auto &directoryEntry : fs::directory_iterator(path)) {
+        File file(directoryEntry);
+
+        TreeNode *childNode = new TreeNode(file);
         node->addChild(childNode);
 
-        if (fs::is_directory(file)) {
+        if (file.isDirectory() && !file.isExtension(".app")) {
+            string directoryPath = file.getAbsolutePath();
             populateTreeNodes(childNode, directoryPath);
         }
     }

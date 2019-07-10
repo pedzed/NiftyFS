@@ -5,6 +5,7 @@
 using KeyCode = uint16_t;
 
 #define keyCodeEsc 27
+#define keyCodeSpace 32
 
 #define keyCodeW 119
 #define keyCodeA 97

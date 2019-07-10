@@ -12,6 +12,7 @@ class TreeVisitor
         ~TreeVisitor();
 
         void setNode(TreeNode *node);
+        TreeNode *getNode();
         bool isOnNode(TreeNode *node);
 
         void moveUp();

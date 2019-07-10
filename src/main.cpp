@@ -6,6 +6,7 @@
 #include "TreeDumper.h"
 #include "FilesystemToTree.h"
 #include "KeyEventListener.h"
+#include "ProcessRunner.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main()
 
         if (path.empty()) {
             // cout << "No path entered. Default directory chosen." << endl;
-            path = "/www/repos/niftyfs/bin";
+            path = "/Users/pedzed/repos/niftyfs/bin";
         }
 
         try {
@@ -45,6 +46,9 @@ int main()
                     treeVisitor.moveUp();
                 } else if (keyEventListener.hasPressedKeyDown()) {
                     treeVisitor.moveDown();
+                } else if (keyEventListener.hasPressedKeySpace()) {
+                    ProcessRunner processRunner;
+                    processRunner.run(ProcessType::VSCODE, treeVisitor.getNode()->getFile());
                 }
 
                 TreeDumper treeDumper(rootNode, &treeVisitor);

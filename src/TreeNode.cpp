@@ -1,7 +1,7 @@
 #include "TreeNode.h"
 
-TreeNode::TreeNode(string name)
-    : name(name)
+TreeNode::TreeNode(File file)
+    : file(file)
 {
     parent = NULL;
     child = NULL;
@@ -15,9 +15,9 @@ TreeNode::~TreeNode()
     delete next;
 }
 
-string TreeNode::getName()
+File TreeNode::getFile()
 {
-    return name;
+    return file;
 }
 
 void TreeNode::setParent(TreeNode *node)

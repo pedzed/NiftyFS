@@ -35,7 +35,7 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
         cout << "[";
     }
 
-    cout << node->getName();
+    cout << node->getFile().getName();
 
     if (treeVisitor->isOnNode(node)) {
         cout << "]";
