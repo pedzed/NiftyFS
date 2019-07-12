@@ -51,6 +51,8 @@ int main()
                 } else if (keyEventListener.hasPressedKeySpace()) {
                     ProcessRunner processRunner;
                     processRunner.run(ProcessType::VSCODE, treeVisitor.getNode()->getFile());
+                } else if (keyEventListener.hasPressedKeyEsc()) {
+                    return 0;
                 }
 
                 TreeDumper treeDumper(rootNode, &treeVisitor);
