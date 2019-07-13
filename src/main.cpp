@@ -29,9 +29,12 @@ int main()
 
         try {
             FilesystemToTree filesystemToTree(path);
-            TreeNode *rootNode = filesystemToTree.getTree();
 
+            TreeNode *rootNode = filesystemToTree.getTree();
             TreeVisitor treeVisitor(rootNode);
+
+            TreeDumper treeDumper(rootNode, &treeVisitor);
+            treeDumper.dump();
 
             while (true) {
                 keyEventListener.update();
@@ -55,7 +58,6 @@ int main()
                     return 0;
                 }
 
-                TreeDumper treeDumper(rootNode, &treeVisitor);
                 treeDumper.dump();
             }
         } catch (const fs::filesystem_error &e) {
