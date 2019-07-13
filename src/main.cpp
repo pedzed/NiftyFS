@@ -24,7 +24,7 @@ int main()
 
         if (path.empty()) {
             // cout << "No path entered. Default directory chosen." << endl;
-            path = "/Users/pedzed/repos/niftyfs/bin";
+            path = "/Users/pedzed/repos/niftyfs/tests/resources";
         }
 
         try {
