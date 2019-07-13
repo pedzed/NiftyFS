@@ -21,15 +21,23 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
 {
     cout << endl;
 
-    uint8_t indentSize = (depth * 4) - 4;
-    string dumpIndent = string(indentSize, ' ');
+    uint8_t indentSize = 4;
     string dumpPrefix = (node->hasNext()) ? "├── " : "└── ";
 
-    if (depth > 1) {
-        cout << dumpIndent;
-    }
-
     if (depth > 0) {
+        for (
+            TreeNode *currentParent = node->getParent();
+            currentParent->hasParent();
+            currentParent = currentParent->getParent()
+        ) {
+            if (!currentParent->hasNext()) {
+                dumpPrefix = string(indentSize, ' ') + dumpPrefix;
+                continue;
+            }
+
+            dumpPrefix = "│    " + dumpPrefix;
+        }
+
         cout << dumpPrefix;
     }
 
