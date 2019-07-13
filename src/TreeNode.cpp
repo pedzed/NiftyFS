@@ -74,6 +74,7 @@ void TreeNode::addChild(TreeNode *node)
 
     currentLast->setNext(node);
     currentLast->getNext()->setPrevious(currentLast);
+    currentLast->getNext()->setParent(this);
 }
 
 void TreeNode::setChild(TreeNode *node)
