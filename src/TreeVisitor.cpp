@@ -49,7 +49,7 @@ void TreeVisitor::moveLeft()
 
 void TreeVisitor::moveRight()
 {
-    if (node->hasChild()) {
+    if (node->hasChild() && node->isExpanded()) {
         node = node->getChild();
     }
 }
