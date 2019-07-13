@@ -1,0 +1,3 @@
+[[dependency]]
+package = "github.com/buckaroo-pm/boost-filesystem"
+version = "branch=master"

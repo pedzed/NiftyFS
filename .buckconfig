@@ -1,0 +1,12 @@
+[project]
+  ignore = .git
+
+[cxx]
+  cpp = /usr/bin/clang++
+  cxxflags = \
+    -Wall \
+    -Wextra \
+    -Wc++11-extensions \
+    -std=c++17 \
+    -g
+  should_remap_host_platform = true
