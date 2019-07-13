@@ -121,3 +121,13 @@ TreeNode *TreeNode::getNext()
 {
     return next;
 }
+
+bool TreeNode::isRoot()
+{
+    return (!hasParent());
+}
+
+bool TreeNode::isLast()
+{
+    return (!hasNext());
+}

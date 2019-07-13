@@ -21,24 +21,8 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
 {
     cout << endl;
 
-    uint8_t indentSize = 4;
-    string dumpPrefix = (node->hasNext()) ? "├── " : "└── ";
-
-    if (depth > 0) {
-        for (
-            TreeNode *currentParent = node->getParent();
-            currentParent->hasParent();
-            currentParent = currentParent->getParent()
-        ) {
-            if (!currentParent->hasNext()) {
-                dumpPrefix = string(indentSize, ' ') + dumpPrefix;
-                continue;
-            }
-
-            dumpPrefix = "│    " + dumpPrefix;
-        }
-
-        cout << dumpPrefix;
+    if (!node->isRoot()) {
+        drawNodePrefix(node);
     }
 
     if (treeVisitor->isOnNode(node)) {
@@ -64,4 +48,25 @@ void TreeDumper::dumpNodeLevel(TreeNode *node, Level depth)
     if (node->hasNext()) {
         dumpNodeLevel(node->getNext(), depth);
     }
+}
+
+void TreeDumper::drawNodePrefix(TreeNode *node)
+{
+    uint8_t indentSize = 4;
+    string dumpPrefix = (node->isLast()) ? "└── " : "├── ";
+
+    for (
+        TreeNode *currentParent = node->getParent();
+        currentParent->hasParent();
+        currentParent = currentParent->getParent()
+    ) {
+        if (!currentParent->hasNext()) {
+            dumpPrefix = string(indentSize, ' ') + dumpPrefix;
+            continue;
+        }
+
+        dumpPrefix = "│" + string(indentSize - 1, ' ') + dumpPrefix;
+    }
+
+    cout << dumpPrefix;
 }

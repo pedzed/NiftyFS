@@ -44,4 +44,7 @@ class TreeNode
         void setNext(TreeNode *);
         bool hasNext();
         TreeNode *getNext();
+
+        bool isRoot();
+        bool isLast();
 };

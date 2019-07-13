@@ -14,4 +14,5 @@ class TreeDumper
         TreeDumper(TreeNode *, TreeVisitor *);
         void dump();
         void dumpNodeLevel(TreeNode *, Level);
+        void drawNodePrefix(TreeNode *);
 };
